@@ -37,6 +37,8 @@ function cardCreator(gitObj) {
   const following = document.createElement('p');
   const bio = document.createElement('p');
 
+  profile.appendChild(userAddress);
+
   card.appendChild(userImg);
   card.appendChild(cardInfo);
 
@@ -47,8 +49,6 @@ function cardCreator(gitObj) {
   cardInfo.appendChild(followers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
-  
-  profile.appendChild(userAddress);
 
   card.classList.add('card');
   cardInfo.classList.add('card-info');
@@ -63,8 +63,8 @@ function cardCreator(gitObj) {
   //return name;
   username.textContent = gitObj.login;
 
-  location.textContent = gitObj.location;
-  profile.textContent = `Profile: ${userAddress}`;
+  location.textContent = `Location: ${gitObj.location}`;
+  profile.textContent = 'Profile: ${userAddress}';
   userAddress.textContent = `${gitObj.html_url}`;
   followers.textContent = `Followers: ${gitObj.followers}`;
   following.textContent = `Following: ${gitObj.following}`;
@@ -166,7 +166,11 @@ followersArray.forEach(function(element) {
 
 
 
+const pTester = document.createElement('p');
+const aTester = document.createElement('a');
+pTester.appendChild(aTester);
 
+console.log(pTester);
 
 
 
