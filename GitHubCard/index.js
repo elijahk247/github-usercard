@@ -95,6 +95,15 @@ function cardAdder(card) {
     user, and adding that card to the DOM.
 */
 
+/*
+  List of LS Instructors Github username's:
+    tetondan
+    dustinmyers
+    justsml
+    luishrd
+    bigknell
+*/
+
 const followersArray = [
   'https://api.github.com/users/tetondan', 
   'https://api.github.com/users/dustinmyers',
@@ -131,6 +140,20 @@ axios.get('https://api.github.com/users/elijahk247')
     console.log('Error: ', err);
   })
 
+followersArray.forEach(function(element) {
+  axios.get(element)
+    .then(res => {
+      console.log(res.data);
+      const gitData = res.data;
+
+      console.log(cardCreator(gitData));
+      cardAdder(cardCreator(gitData));
+    })
+    .catch(err => {
+      console.log("Error: ", err);
+    })
+})
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -146,11 +169,4 @@ axios.get('https://api.github.com/users/elijahk247')
 
 
 
-/*
-  List of LS Instructors Github username's:
-    tetondan
-    dustinmyers
-    justsml
-    luishrd
-    bigknell
-*/
+
