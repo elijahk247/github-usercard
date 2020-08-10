@@ -1,8 +1,37 @@
+import axios from 'axios';
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+
+/* better way would be to just link it in HTML using the script tag
+
+  - includes everything rather than npm install since it is missing things sometimes 
+*/
+
+/*
+  STEP 4: Pass the data received from Github into your function,
+    and append the returned markup to the DOM as a child of .cards
+*/
+
+const cards = document.querySelector('.cards');
+function cardAdder(markup) {
+  cards.appendChild(markup);
+}
+
+axios.get('https://api.github.com/users/elijahk247')
+  .then(res => {
+    console.log(res.data);
+    const gitData = res.data;
+    console.log(gitData);
+
+    cardAdder(gitData.login);
+  })
+  .catch(err => {
+    console.log('Error: ', err);
+  })
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -12,10 +41,7 @@
     Skip to STEP 3.
 */
 
-/*
-  STEP 4: Pass the data received from Github into your function,
-    and append the returned markup to the DOM as a child of .cards
-*/
+
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -28,7 +54,7 @@
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+//const followersArray = [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
